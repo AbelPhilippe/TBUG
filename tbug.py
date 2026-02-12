@@ -347,8 +347,6 @@ def main():
 
     if not args.url and not args.list:
         print(get_banner())
-        print(f"{colorama.Fore.YELLOW}[-] You must specify -u or -l{colorama.Style.RESET_ALL}")
-        print(f"{colorama.Fore.YELLOW}Use -h for help.")
         sys.exit(1)
 
     print(get_banner())
