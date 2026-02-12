@@ -293,7 +293,7 @@ def scan_sqli(url):
                 print(f"{colorama.Fore.LIGHTCYAN_EX}    URL: {test_url}")
                 print(f"{colorama.Fore.LIGHTCYAN_EX}    Param: {param}")
                 print(f"{colorama.Fore.LIGHTCYAN_EX}    Payload: {payload}")
-                print(f"{colorama.Fore.YELLOW}    Answer difference: {diff}")
+                print(f"{colorama.Fore.YELLOW}    Response difference: {diff}")
                 print(f"{colorama.Fore.MAGENTA}-" * 60)
 
 #=============================#
