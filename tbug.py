@@ -84,9 +84,9 @@ def print_help():
       --xss-payloads <file>     XSS payload file
 
     Examples:
-      tbug -u https://site.com
       tbug -l targets.txt -t 20
-      tbug -u https://site.com --sqli-payloads sqli_payloads.txt -v
+      tbug -u http://testphp.vulnweb.com/index.php
+      tbug -u http://testphp.vulnweb.com/index.php --sqli-payloads sqli_payloads.txt -v
       {colorama.Style.RESET_ALL}
 """
     print(help_text)
