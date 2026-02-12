@@ -21,10 +21,6 @@ scan_results.txt
 .DS_Store
 Thumbs.db
 
-# Virtualenv
-venv/
-.env/
-
 # Python
 __pycache__/
 *.pyc
