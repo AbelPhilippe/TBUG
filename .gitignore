@@ -1,0 +1,36 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtualenv
+venv/
+.env/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Output files
+scan_results.txt
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Virtualenv
+venv/
+.env/
+
+# Python
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+
+# Output
+scan_results.txt
