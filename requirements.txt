@@ -1,0 +1,7 @@
+numpy
+plotly
+bs4
+requests
+urllib3
+argparse
+colorama
