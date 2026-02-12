@@ -1,14 +1,44 @@
-# TBUG
-A university exercise/challenge. Little program to scan XSS and SQLI vulns in a url
-SQL Injection and XSS Vulnerability Scanner
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=ff00ff&height=100&section=header">
 
-## Features
-- SQLi Scanner
-- XSS Scanner
-- Multithreading
-- Custom payloads
-<img width="1792" height="1024" alt="image" src="https://github.com/user-attachments/assets/d10f6e09-19a6-46b3-b3c6-4dfa6fa69eb7" />
+<img width="1792" height="1024" alt="image" src="https://github.com/user-attachments/assets/d10f6e09-19a6-46b3-b3c6-4dfa6fa69eb7"/>
+  
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=ff00ff&height=100&section=footer">
 
+## Benefits
+- Easy to use.
+- Time saving.
+
+## Environment support
+
+| OS/Subsystem | Installation of All Requirements | Compilation | EXE Execution |
+| ----------- | ----------- | ----------- | ----------- |
+| Debian| ✅ | ✅ | ✅ |
+| Ubuntu | ✅ | ✅ | ✅ |
+| Kali | ✅ | ✅ | ✅ |
+| WSL | ✅ | ✅ | ✅ |
+
+
+## Clone repository
+
+``` bash
+git clone https://github.com/AbelPhilippe/TBUG
+```
+```bash
+cd TBUG
+```
+
+## Execute TBUG (UBUNTU / DEBIAN / KALI / WSL)
+
+```bash
+chmod +x tbug.py
+```
+```bash
+./tbug.py
+```
 ## Usage
 ```bash
 python3 tbug.py -u https://example.com
+```
+
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=ff00ff&height=100&section=footer">
