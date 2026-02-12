@@ -30,15 +30,23 @@ git clone https://github.com/AbelPhilippe/TBUG
 cd TBUG
 ```
 
-## Execute TBUG (UBUNTU / DEBIAN / KALI / WSL)
+## Use VENV
 
 ```bash
-chmod +x tbug.py
+python3 -m venv venv
 ```
 ```bash
-./tbug.py
+source venv/bin/activate
 ```
-## Usage
+
+## Install requirements.txt
+
+```bash
+pip install -r requirements.txt
+```
+
+## Execute TBUG (UBUNTU / DEBIAN / KALI / WSL)
+
 ```bash
 python3 tbug.py -u https://example.com
 ```
