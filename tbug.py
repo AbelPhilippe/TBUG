@@ -50,46 +50,46 @@ THREADS = 5
 def get_banner():
     return f"""
 {colorama.Fore.LIGHTMAGENTA_EX}
-████████╗   ██████╗ ██╗   ██╗ ██████╗ 
-╚══██╔══╝   ██╔══██╗██║   ██║██╔════╝ 
-   ██║█████╗██████╔╝██║   ██║██║  ███╗
-   ██║╚════╝██╔══██╗██║   ██║██║   ██║
-   ██║      ██████╔╝╚██████╔╝╚██████╔╝
-   ╚═╝      ╚═════╝  ╚═════╝  ╚═════╝ 
-#------------------------------------#
-# SQLI and XSS Vulnerability Scanner #
-#      Developed by AbelPhilippe     #
-#------------------------------------#
+    ████████╗   ██████╗ ██╗   ██╗ ██████╗ 
+    ╚══██╔══╝   ██╔══██╗██║   ██║██╔════╝ 
+       ██║█████╗██████╔╝██║   ██║██║  ███╗
+       ██║╚════╝██╔══██╗██║   ██║██║   ██║
+       ██║      ██████╔╝╚██████╔╝╚██████╔╝
+       ╚═╝      ╚═════╝  ╚═════╝  ╚═════╝ 
+    #------------------------------------#
+    # SQLI and XSS Vulnerability Scanner #
+    #      Developed by AbelPhilippe     #
+    #------------------------------------#
 
-Usage: tbug -u <target> [options]
+    Usage: tbug -u <target> [options]
 """
 
 def print_help():
     print(get_banner())
     help_text = f"""{colorama.Fore.MAGENTA}
-General:
-  -h, --help                Show this help
-  -u, --url <target>        Target URL
-  -l, --list <file>         Target list file
-  -o, --output <file>       Output file
-  -v, --verbose             Verbose mode
-  -s, --silent              Silent mode
+    General:
+      -h, --help                Show this help
+      -u, --url <target>        Target URL
+      -l, --list <file>         Target list file
+      -o, --output <file>       Output file
+      -v, --verbose             Verbose mode
+      -s, --silent              Silent mode
 
-Performance:
-  -t, --threads <n>         Number of threads
-  --timeout <sec>          Timeout
+    Performance:
+      -t, --threads <n>         Number of threads
+      --timeout <sec>           Timeout
 
-SQLi:
-  --sqli-payloads <file>    SQLi payload file
+    SQLi:
+      --sqli-payloads <file>    SQLi payload file
 
-XSS:
-  --xss-payloads <file>     XSS payload file
+    XSS:
+      --xss-payloads <file>     XSS payload file
 
-Examples:
-  tbug -u https://site.com
-  tbug -l targets.txt -t 20
-  tbug -u https://site.com --sqli-payloads sqli_payloads.txt --xss-payloads xss_payloads.txt -v
-  {colorama.Style.RESET_ALL}
+    Examples:
+      tbug -u https://site.com
+      tbug -l targets.txt -t 20
+      tbug -u https://site.com --sqli-payloads sqli_payloads.txt -v
+      {colorama.Style.RESET_ALL}
 """
     print(help_text)
 
