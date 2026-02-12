@@ -107,8 +107,7 @@ def parse_arguments():
         help="Show help"
     )
 
-    # Target obrigatório: URL OU Lista
-    target = parser.add_mutually_exclusive_group(required=True)
+    target = parser.add_mutually_exclusive_group()
 
     target.add_argument(
         "-u", "--url",
@@ -264,7 +263,7 @@ def scan_sqli(url):
     if not params:
         return
 
-    # Requisição base (sem payload)
+    # Base response
     base_query = urlencode(params)
     base_url = f"{url.split('?')[0]}?{base_query}"
 
@@ -343,10 +342,16 @@ def main():
         print_help()
         sys.exit(0)
 
-    # Nenhum argumento
+    # If no arguments, show banner
     if len(sys.argv) == 1:
-        print_help()
+        print(get_banner())
         sys.exit(0)
+
+    if not args.url and not args.list:
+        print(get_banner())
+        print(f"{colorama.Fore.YELLOW}[-] You must specify -u or -l{colorama.Style.RESET_ALL}")
+        print(f"{colorama.Fore.YELLOW}Use -h for help.")
+        sys.exit(1)
 
     print(get_banner())
 
