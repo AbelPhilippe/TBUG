@@ -1,7 +1,5 @@
 import os
 import sys
-import numpy as np
-import plotly.express as px
 import requests
 import argparse
 import colorama
