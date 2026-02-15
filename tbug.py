@@ -329,89 +329,105 @@ def scan_xss(url):
 #------------------#
 
 def main():
+    try:
+        colorama.init(autoreset=True)
 
-    colorama.init(autoreset=True)
+        parser = parse_arguments()
+        args = parser.parse_args()
 
-    parser = parse_arguments()
-    args = parser.parse_args()
+        # Help
+        if args.help:
+            print_help()
+            sys.exit(0)
 
-    # Help
-    if args.help:
-        print_help()
-        sys.exit(0)
+        # If no arguments, show banner
+        if len(sys.argv) == 1:
+            print(get_banner())
+            sys.exit(0)
 
-    # If no arguments, show banner
-    if len(sys.argv) == 1:
-        print(get_banner())
-        sys.exit(0)
-
-    if not args.url and not args.list:
-        print(get_banner())
-        sys.exit(1)
-
-    print(get_banner())
-
-    url = args.url
-    list_file = args.list
-    output = args.output
-    threads = args.threads
-    timeout = args.timeout
-    verbose = args.verbose
-    silent = args.silent
-
-    # ===============================
-    # Verbose
-    # ===============================
-    if verbose:
-        print(f"{colorama.Fore.LIGHTMAGENTA_EX}[+] Threads: {threads}")
-        print(f"{colorama.Fore.LIGHTMAGENTA_EX}[+] Timeout: {timeout}")
-
-    # ===============================
-    # Target
-    # ===============================
-    targets = []
-
-    if url:
-        if not is_valid_url(url):
+        if not args.url and not args.list:
+            print(get_banner())
             sys.exit(1)
 
-        targets.append(url)
+        print(get_banner())
 
-    if list_file:
-        if not os.path.exists(list_file):
-            print(f"{colorama.Fore.LIGHTYELLOW_EX}[-] File not found: {list_file}")
-            sys.exit(1)
+        url = args.url
+        list_file = args.list
+        output = args.output
+        threads = args.threads
+        timeout = args.timeout
+        verbose = args.verbose
+        silent = args.silent
 
-        with open(list_file) as f:
-            for line in f:
-                line = line.strip()
-
-                if line and is_valid_url(line):
-                    targets.append(line)
-
-    if not targets:
-        print(f"{colorama.Fore.LIGHTYELLOW_EX}[-] No valid targets found")
-        sys.exit(1)
-
-    # ===============================
-    # Start Scan
-    # ===============================
-    for target in targets:
-
-        if not silent:
-            print(f"{colorama.Fore.LIGHTMAGENTA_EX}\n[+] Scanning: {target}")
-
-        urls = crawl(target)
-
+        # ===============================
+        # Verbose
+        # ===============================
         if verbose:
-            print(f"{colorama.Fore.GREEN}[+] Found {len(urls)} URLs")
+            print(f"{colorama.Fore.LIGHTMAGENTA_EX}[+] Threads: {threads}")
+            print(f"{colorama.Fore.LIGHTMAGENTA_EX}[+] Timeout: {timeout}")
 
-        for url in urls:
-            scan_sqli(url)
-            scan_xss(url)
+        # ===============================
+        # Target
+        # ===============================
+        targets = []
 
-    print("\n[+] Scan finished.")
+        if url:
+            if not is_valid_url(url):
+                sys.exit(1)
 
+            targets.append(url)
+
+        if list_file:
+            if not os.path.exists(list_file):
+                print(f"{colorama.Fore.LIGHTYELLOW_EX}[-] File not found: {list_file}")
+                sys.exit(1)
+
+            with open(list_file) as f:
+                for line in f:
+                    line = line.strip()
+
+                    if line and is_valid_url(line):
+                        targets.append(line)
+
+        if not targets:
+            print(f"{colorama.Fore.LIGHTYELLOW_EX}[-] No valid targets found")
+            sys.exit(1)
+
+        # ===============================
+        # Start Scan
+        # ===============================
+        for target in targets:
+
+            if not silent:
+                print(f"{colorama.Fore.LIGHTMAGENTA_EX}\n[+] Scanning: {target}")
+
+            urls = crawl(target)
+
+            if verbose:
+                print(f"{colorama.Fore.GREEN}[+] Found {len(urls)} URLs")
+
+            for url in urls:
+                scan_sqli(url)
+                scan_xss(url)
+
+        print("\n[+] Scan finished.")
+        except FileNotFoundError as e:
+        error(e)
+
+    except ValueError as e:
+        error(e)
+
+    except IOError as e:
+        error(e)
+
+    except KeyboardInterrupt:
+        warning("Interrupted")
+
+    except Exception as e:
+        error(f"Unhandled error: {e}")
+
+        if "--debug" in sys.argv:
+            raise
 
 if __name__ == "__main__":
     main()
